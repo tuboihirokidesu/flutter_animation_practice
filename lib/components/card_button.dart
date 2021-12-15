@@ -21,7 +21,7 @@ class CardButton extends StatelessWidget {
         Expanded(
           child: Container(
             color: Colors.blue,
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10),
             child: Row(
               children: [
                 Expanded(
@@ -33,7 +33,7 @@ class CardButton extends StatelessWidget {
                       onPressed: () {}),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 20),
+                  padding: const EdgeInsets.only(left: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,

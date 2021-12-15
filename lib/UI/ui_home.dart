@@ -4,7 +4,7 @@ import 'package:flutter_animation/UI/carousel/carousel.dart';
 import 'package:flutter_animation/components/card_button.dart';
 
 class UiFlutter extends StatefulWidget {
-  UiFlutter({Key? key}) : super(key: key);
+  const UiFlutter({Key? key}) : super(key: key);
 
   @override
   _UiFlutterState createState() => _UiFlutterState();
@@ -27,15 +27,12 @@ class _UiFlutterState extends State<UiFlutter> {
               actionTap: () {
                 onCardTap(const Carousel());
               },
-              url: 'assets/person_search/machu_picchu.png',
             ),
             CardButton(
               title: 'Carousel',
-              description: 'Search for records in reniec',
               actionTap: () {
                 onCardTap(const Carousel());
               },
-              url: 'assets/person_search/machu_picchu.png',
             ),
           ],
         ));
