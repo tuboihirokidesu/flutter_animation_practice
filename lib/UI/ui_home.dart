@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_animation/UI/carousel/carousel.dart';
 import 'package:flutter_animation/UI/api_data/api_data.dart';
+import 'package:flutter_animation/UI/counter_mvvm/counter.dart';
 import 'package:flutter_animation/components/card_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -51,6 +52,13 @@ class UiFlutter extends ConsumerWidget {
             actionTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (_) => const ApiData()));
+            },
+          ),
+          CardButton(
+            title: 'counter_mvvm',
+            actionTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const CounterPage()));
             },
           ),
           Center(
