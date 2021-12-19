@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animation/UI/car_app/home/car_app_home.dart';
 
 import 'package:flutter_animation/UI/carousel/carousel.dart';
 import 'package:flutter_animation/UI/api_data/api_data.dart';
@@ -59,6 +60,13 @@ class UiFlutter extends ConsumerWidget {
             actionTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (_) => const CounterPage()));
+            },
+          ),
+          CardButton(
+            title: 'car_app',
+            actionTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const CarAppHomePage()));
             },
           ),
           Center(
