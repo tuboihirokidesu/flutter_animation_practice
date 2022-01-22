@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.18.1
+  flutter_svg: ^1.0.0
   freezed_annotation: ^1.1.0
   hooks_riverpod: ^1.0.3
   http: ^0.13.4
@@ -29,4 +30,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/images/
+    - assets/icons/

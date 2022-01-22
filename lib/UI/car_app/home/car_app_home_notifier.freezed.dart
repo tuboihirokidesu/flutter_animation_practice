@@ -22,13 +22,19 @@ class _$CarAppHomeStateTearOff {
       bool isTopDoorLock = true,
       bool isRightDoorLock = true,
       bool isBottomDoorLock = true,
-      int selectedBottomNab = 0}) {
+      int selectedBottomNab = 0,
+      bool isCoolSelected = true,
+      bool isShowTyres = false,
+      bool isShowTyreStatus = false}) {
     return _CarAppHomeState(
       isLeftDoorLock: isLeftDoorLock,
       isTopDoorLock: isTopDoorLock,
       isRightDoorLock: isRightDoorLock,
       isBottomDoorLock: isBottomDoorLock,
       selectedBottomNab: selectedBottomNab,
+      isCoolSelected: isCoolSelected,
+      isShowTyres: isShowTyres,
+      isShowTyreStatus: isShowTyreStatus,
     );
   }
 }
@@ -44,6 +50,9 @@ mixin _$CarAppHomeState {
   bool get isRightDoorLock => throw _privateConstructorUsedError;
   bool get isBottomDoorLock => throw _privateConstructorUsedError;
   int get selectedBottomNab => throw _privateConstructorUsedError;
+  bool get isCoolSelected => throw _privateConstructorUsedError;
+  bool get isShowTyres => throw _privateConstructorUsedError;
+  bool get isShowTyreStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CarAppHomeStateCopyWith<CarAppHomeState> get copyWith =>
@@ -60,7 +69,10 @@ abstract class $CarAppHomeStateCopyWith<$Res> {
       bool isTopDoorLock,
       bool isRightDoorLock,
       bool isBottomDoorLock,
-      int selectedBottomNab});
+      int selectedBottomNab,
+      bool isCoolSelected,
+      bool isShowTyres,
+      bool isShowTyreStatus});
 }
 
 /// @nodoc
@@ -79,6 +91,9 @@ class _$CarAppHomeStateCopyWithImpl<$Res>
     Object? isRightDoorLock = freezed,
     Object? isBottomDoorLock = freezed,
     Object? selectedBottomNab = freezed,
+    Object? isCoolSelected = freezed,
+    Object? isShowTyres = freezed,
+    Object? isShowTyreStatus = freezed,
   }) {
     return _then(_value.copyWith(
       isLeftDoorLock: isLeftDoorLock == freezed
@@ -101,6 +116,18 @@ class _$CarAppHomeStateCopyWithImpl<$Res>
           ? _value.selectedBottomNab
           : selectedBottomNab // ignore: cast_nullable_to_non_nullable
               as int,
+      isCoolSelected: isCoolSelected == freezed
+          ? _value.isCoolSelected
+          : isCoolSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShowTyres: isShowTyres == freezed
+          ? _value.isShowTyres
+          : isShowTyres // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShowTyreStatus: isShowTyreStatus == freezed
+          ? _value.isShowTyreStatus
+          : isShowTyreStatus // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -117,7 +144,10 @@ abstract class _$CarAppHomeStateCopyWith<$Res>
       bool isTopDoorLock,
       bool isRightDoorLock,
       bool isBottomDoorLock,
-      int selectedBottomNab});
+      int selectedBottomNab,
+      bool isCoolSelected,
+      bool isShowTyres,
+      bool isShowTyreStatus});
 }
 
 /// @nodoc
@@ -138,6 +168,9 @@ class __$CarAppHomeStateCopyWithImpl<$Res>
     Object? isRightDoorLock = freezed,
     Object? isBottomDoorLock = freezed,
     Object? selectedBottomNab = freezed,
+    Object? isCoolSelected = freezed,
+    Object? isShowTyres = freezed,
+    Object? isShowTyreStatus = freezed,
   }) {
     return _then(_CarAppHomeState(
       isLeftDoorLock: isLeftDoorLock == freezed
@@ -160,6 +193,18 @@ class __$CarAppHomeStateCopyWithImpl<$Res>
           ? _value.selectedBottomNab
           : selectedBottomNab // ignore: cast_nullable_to_non_nullable
               as int,
+      isCoolSelected: isCoolSelected == freezed
+          ? _value.isCoolSelected
+          : isCoolSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShowTyres: isShowTyres == freezed
+          ? _value.isShowTyres
+          : isShowTyres // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isShowTyreStatus: isShowTyreStatus == freezed
+          ? _value.isShowTyreStatus
+          : isShowTyreStatus // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -172,7 +217,10 @@ class _$_CarAppHomeState implements _CarAppHomeState {
       this.isTopDoorLock = true,
       this.isRightDoorLock = true,
       this.isBottomDoorLock = true,
-      this.selectedBottomNab = 0});
+      this.selectedBottomNab = 0,
+      this.isCoolSelected = true,
+      this.isShowTyres = false,
+      this.isShowTyreStatus = false});
 
   @JsonKey()
   @override
@@ -191,10 +239,19 @@ class _$_CarAppHomeState implements _CarAppHomeState {
   @JsonKey()
   @override
   final int selectedBottomNab;
+  @JsonKey()
+  @override
+  final bool isCoolSelected;
+  @JsonKey()
+  @override
+  final bool isShowTyres;
+  @JsonKey()
+  @override
+  final bool isShowTyreStatus;
 
   @override
   String toString() {
-    return 'CarAppHomeState(isLeftDoorLock: $isLeftDoorLock, isTopDoorLock: $isTopDoorLock, isRightDoorLock: $isRightDoorLock, isBottomDoorLock: $isBottomDoorLock, selectedBottomNab: $selectedBottomNab)';
+    return 'CarAppHomeState(isLeftDoorLock: $isLeftDoorLock, isTopDoorLock: $isTopDoorLock, isRightDoorLock: $isRightDoorLock, isBottomDoorLock: $isBottomDoorLock, selectedBottomNab: $selectedBottomNab, isCoolSelected: $isCoolSelected, isShowTyres: $isShowTyres, isShowTyreStatus: $isShowTyreStatus)';
   }
 
   @override
@@ -211,7 +268,13 @@ class _$_CarAppHomeState implements _CarAppHomeState {
             const DeepCollectionEquality()
                 .equals(other.isBottomDoorLock, isBottomDoorLock) &&
             const DeepCollectionEquality()
-                .equals(other.selectedBottomNab, selectedBottomNab));
+                .equals(other.selectedBottomNab, selectedBottomNab) &&
+            const DeepCollectionEquality()
+                .equals(other.isCoolSelected, isCoolSelected) &&
+            const DeepCollectionEquality()
+                .equals(other.isShowTyres, isShowTyres) &&
+            const DeepCollectionEquality()
+                .equals(other.isShowTyreStatus, isShowTyreStatus));
   }
 
   @override
@@ -221,7 +284,10 @@ class _$_CarAppHomeState implements _CarAppHomeState {
       const DeepCollectionEquality().hash(isTopDoorLock),
       const DeepCollectionEquality().hash(isRightDoorLock),
       const DeepCollectionEquality().hash(isBottomDoorLock),
-      const DeepCollectionEquality().hash(selectedBottomNab));
+      const DeepCollectionEquality().hash(selectedBottomNab),
+      const DeepCollectionEquality().hash(isCoolSelected),
+      const DeepCollectionEquality().hash(isShowTyres),
+      const DeepCollectionEquality().hash(isShowTyreStatus));
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +301,10 @@ abstract class _CarAppHomeState implements CarAppHomeState {
       bool isTopDoorLock,
       bool isRightDoorLock,
       bool isBottomDoorLock,
-      int selectedBottomNab}) = _$_CarAppHomeState;
+      int selectedBottomNab,
+      bool isCoolSelected,
+      bool isShowTyres,
+      bool isShowTyreStatus}) = _$_CarAppHomeState;
 
   @override
 
@@ -249,6 +318,12 @@ abstract class _CarAppHomeState implements CarAppHomeState {
   bool get isBottomDoorLock;
   @override
   int get selectedBottomNab;
+  @override
+  bool get isCoolSelected;
+  @override
+  bool get isShowTyres;
+  @override
+  bool get isShowTyreStatus;
   @override
   @JsonKey(ignore: true)
   _$CarAppHomeStateCopyWith<_CarAppHomeState> get copyWith =>

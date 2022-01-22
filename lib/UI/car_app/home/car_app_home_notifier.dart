@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,6 +14,9 @@ class CarAppHomeState with _$CarAppHomeState {
     @Default(true) bool isRightDoorLock,
     @Default(true) bool isBottomDoorLock,
     @Default(0) int selectedBottomNab,
+    @Default(true) bool isCoolSelected,
+    @Default(false) bool isShowTyres,
+    @Default(false) bool isShowTyreStatus,
   }) = _CarAppHomeState;
 }
 
@@ -44,5 +49,29 @@ class CarAppHomeNotifier extends StateNotifier<CarAppHomeState> {
 
   void updateBottomDoorLock() {
     state = state.copyWith(isBottomDoorLock: !state.isBottomDoorLock);
+  }
+
+  void updateCoolSelectedTab() {
+    state = state.copyWith(isCoolSelected: !state.isCoolSelected);
+  }
+
+  void showTyresController(int index) {
+    if (state.selectedBottomNab != 3 && index == 3) {
+      Future.delayed(const Duration(milliseconds: 400), () {
+        state = state.copyWith(isShowTyres: true);
+      });
+    } else {
+      state = state.copyWith(isShowTyres: false);
+    }
+  }
+
+  void tyreStatusController(int index) {
+    if (index == 3) {
+      state = state.copyWith(isShowTyreStatus: true);
+    } else {
+      Future.delayed(const Duration(milliseconds: 400), () {
+        state = state.copyWith(isShowTyreStatus: false);
+      });
+    }
   }
 }

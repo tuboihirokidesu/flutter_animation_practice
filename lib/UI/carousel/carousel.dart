@@ -25,7 +25,7 @@ class _CarouselState extends State<Carousel> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: const Color(0x44000000),
+          backgroundColor: Colors.transparent,
         ),
         body: SafeArea(
           child: Stack(

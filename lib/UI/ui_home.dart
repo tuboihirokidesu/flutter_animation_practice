@@ -4,6 +4,7 @@ import 'package:flutter_animation/UI/car_app/home/car_app_home.dart';
 import 'package:flutter_animation/UI/carousel/carousel.dart';
 import 'package:flutter_animation/UI/api_data/api_data.dart';
 import 'package:flutter_animation/UI/counter_mvvm/counter.dart';
+import 'package:flutter_animation/UI/sum_number_card/card_page.dart';
 import 'package:flutter_animation/components/card_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -67,6 +68,13 @@ class UiFlutter extends ConsumerWidget {
             actionTap: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (_) => const CarAppHomePage()));
+            },
+          ),
+          CardButton(
+            title: 'sum_number_card',
+            actionTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => const CardPage()));
             },
           ),
           Center(

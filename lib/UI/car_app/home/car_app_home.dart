@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animation/UI/car_app/components/battery_status.dart';
 import 'package:flutter_animation/UI/car_app/components/door_lock.dart';
 import 'package:flutter_animation/UI/car_app/components/navigation_bar.dart';
+import 'package:flutter_animation/UI/car_app/components/temp_detail/temp_detail.dart';
+import 'package:flutter_animation/UI/car_app/components/temp_detail/temp_detail_notifier.dart';
+import 'package:flutter_animation/UI/car_app/components/tyers.dart';
+import 'package:flutter_animation/UI/car_app/components/tyre_psi_card.dart';
 import 'package:flutter_animation/UI/car_app/home/car_app_home_notifier.dart';
+import 'package:flutter_animation/UI/car_app/models/tyre_psi.dart';
 import 'package:flutter_animation/constanins.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,21 +21,57 @@ class CarAppHomePage extends HookConsumerWidget {
     final _batteryAnimationController =
         useAnimationController(duration: const Duration(milliseconds: 600));
     final _animationBatteryStatus = useAnimation(_batteryAnimationController);
+    final _tempAnimationController =
+        useAnimationController(duration: const Duration(milliseconds: 600));
+    final _animationCarShift = useAnimation(_tempAnimationController);
+
+    final _tyreAnimationController =
+        useAnimationController(duration: const Duration(milliseconds: 600));
+
+    var _animationTyre1Psi = useAnimationController().view;
+    var _animationTyre2Psi = useAnimationController().view;
+    var _animationTyre3Psi = useAnimationController().view;
+    var _animationTyre4Psi = useAnimationController().view;
 
     final state = ref.watch(carAppHomeNotifierProvider);
     final notifier = ref.watch(carAppHomeNotifierProvider.notifier);
+    final tempDetailState = ref.watch(tempDetailNotifierProvider);
 
-    useAnimation(_batteryAnimationController);
+    List<Animation<double>>? _tyreAnimations;
+
+    setupTyreAnimation() {
+      _animationTyre1Psi = CurvedAnimation(
+          parent: _tyreAnimationController, curve: Interval(0.34, 0.5));
+      _animationTyre2Psi = CurvedAnimation(
+          parent: _tyreAnimationController, curve: Interval(0.5, 0.66));
+      _animationTyre3Psi = CurvedAnimation(
+          parent: _tyreAnimationController, curve: Interval(0.66, 0.82));
+      _animationTyre4Psi = CurvedAnimation(
+          parent: _tyreAnimationController, curve: Interval(0.82, 1));
+
+      _tyreAnimations = [
+        _animationTyre1Psi,
+        _animationTyre2Psi,
+        _animationTyre3Psi,
+        _animationTyre4Psi,
+      ];
+    }
 
 //NOTE: 必要なのか？
-    // useEffect(() {
-    //   return () => _batteryAnimationController.dispose();
-    // }, const []);
+    useEffect(() {
+      setupTyreAnimation();
+      return () => {
+            _batteryAnimationController.dispose(),
+            _tempAnimationController.dispose()
+          };
+    }, const []);
 
     return AnimatedBuilder(
       animation: Listenable.merge([
         controller,
         _batteryAnimationController,
+        _tempAnimationController,
+        _tyreAnimationController,
       ]),
       builder: (context, _) {
         return Scaffold(
@@ -41,7 +82,24 @@ class CarAppHomePage extends HookConsumerWidget {
               } else if (state.selectedBottomNab == 1 && index != 1) {
                 _batteryAnimationController.reverse(from: 0.7);
               }
+
+              if (index == 2) {
+                _tempAnimationController.forward();
+              } else if (state.selectedBottomNab == 2 && index != 2) {
+                _tempAnimationController.reverse(from: 0.4);
+              }
+
+              if (index == 3) {
+                _tyreAnimationController.forward();
+              } else if (state.selectedBottomNab == 3 && index != 3) {
+                _tyreAnimationController.reverse();
+              }
+
+              notifier.showTyresController(index);
               notifier.onBottomNavigationTabChange(index);
+              notifier.tyreStatusController(index);
+              print(state.isShowTyres);
+              print(state.isShowTyreStatus);
             },
             selectedTab: state.selectedBottomNab,
           ),
@@ -51,12 +109,21 @@ class CarAppHomePage extends HookConsumerWidget {
                 return Stack(
                   alignment: Alignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: constrains.maxHeight * 0.1),
-                      child: SvgPicture.asset(
-                        "assets/icons/Car.svg",
-                        width: double.infinity,
+                    SizedBox(
+                      height: constrains.maxHeight,
+                      width: constrains.maxWidth,
+                    ),
+                    Positioned(
+                      left: constrains.maxWidth / 2 * _animationCarShift,
+                      height: constrains.maxHeight,
+                      width: constrains.maxWidth,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: constrains.maxHeight * 0.1),
+                        child: SvgPicture.asset(
+                          "assets/icons/Car.svg",
+                          width: double.infinity,
+                        ),
                       ),
                     ),
                     AnimatedPositioned(
@@ -131,6 +198,55 @@ class CarAppHomePage extends HookConsumerWidget {
                         child: BatteryStatus(constrains: constrains),
                       ),
                     ),
+                    Positioned(
+                      height: constrains.maxHeight,
+                      width: constrains.maxWidth,
+                      top: 60 * (1 - _animationCarShift),
+                      child: Opacity(
+                        opacity: _animationCarShift,
+                        child: TempDetail(
+                          isActive: state.isCoolSelected,
+                          press: notifier.updateCoolSelectedTab,
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: -180 * (1 - _animationCarShift),
+                      child: AnimatedSwitcher(
+                        duration: defaultDuration,
+                        child: state.isCoolSelected
+                            ? Opacity(
+                                opacity: tempDetailState.temp / 100,
+                                child: Image.asset(
+                                  "assets/images/Cool_glow_2.png",
+                                  key: UniqueKey(),
+                                  width: 200,
+                                ),
+                              )
+                            : Image.asset(
+                                "assets/images/Hot_glow_4.png",
+                                key: UniqueKey(),
+                                width: 200,
+                              ),
+                      ),
+                    ),
+                    if (state.isShowTyres) ...tyres(constrains),
+                    if (state.isShowTyreStatus)
+                      GridView.builder(
+                        itemCount: 4,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: defaultPadding,
+                          crossAxisSpacing: defaultPadding,
+                          childAspectRatio:
+                              constrains.maxWidth / constrains.maxHeight,
+                        ),
+                        itemBuilder: (context, index) => TyrePsiCard(
+                          isBottomTwoTyre: index > 1,
+                          tyrePsi: demoPsiList[index],
+                        ),
+                      )
                   ],
                 );
               },

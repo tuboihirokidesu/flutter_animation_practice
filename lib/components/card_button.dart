@@ -66,12 +66,13 @@ class CardButton extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: IconButton(
-                      icon: const Icon(
-                        Icons.chevron_right_outlined,
-                        color: Colors.white,
-                        size: 35.0,
-                      ),
-                      onPressed: () {}),
+                    icon: const Icon(
+                      Icons.chevron_right_outlined,
+                      color: Colors.white,
+                      size: 35.0,
+                    ),
+                    onPressed: () {},
+                  ),
                 ),
               ],
             ),

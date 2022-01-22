@@ -24,17 +24,17 @@ class CounterPageNotifier extends StateNotifier<CounterState> {
   // Reader 型をフィールドに持っておくことで、HomePageNotifierから他のProviderを読み取ることができるようになります
   final Reader _read;
 
-  increaseMainCount() async {
+  increaseMainCount() {
     state = state.copyWith(mainCount: state.mainCount + 1);
   }
 
   // サブカウントを+1する
-  increaseSubCount() async {
+  increaseSubCount() {
     state = state.copyWith(subCount: state.subCount + 1);
   }
 
   // すべてのカウントを0に戻す
-  resetAllCount() async {
+  resetAllCount() {
     state = state.copyWith(
       mainCount: 0,
       subCount: 0,
