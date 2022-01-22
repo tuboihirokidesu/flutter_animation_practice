@@ -48,6 +48,12 @@ android {
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        if (dartEnvironmentVariables.FLAVOR != 'prod') {
+        applicationIdSuffix ".${dartEnvironmentVariables.FLAVOR}"
+        }
+        resValue "string", "flutter_animation", "FlutterAT" + 
+        (dartEnvironmentVariables.FLAVOR == 'prod' ? '' : ".${dartEnvironmentVariables.FLAVOR}")
+}
     }
 
     buildTypes {
@@ -57,7 +63,6 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-}
 
 flutter {
     source '../..'
@@ -65,4 +70,14 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+// android/app/build.gradle
+
+task copySources(type: Copy) {
+   from "src/${dartEnvironmentVariables.FLAVOR}/res"
+   into 'src/main/res'
+}
+tasks.whenTaskAdded { task ->
+   task.dependsOn copySources
 }
