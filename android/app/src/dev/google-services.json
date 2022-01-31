@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "407600524472",
+    "project_id": "flutter-animate-dev-a89bd",
+    "storage_bucket": "flutter-animate-dev-a89bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407600524472:android:ed93c0f3ccf3601910d84d",
+        "android_client_info": {
+          "package_name": "jp.co.altive.fat.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407600524472-nn52f4fl372eel9spbaas0sgeebpcfp3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCM-FO09CP4fqitQGqYHnPd5dqiqg6B1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407600524472-nn52f4fl372eel9spbaas0sgeebpcfp3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "407600524472-nmvjsumft95jhqe00eccf3kkqvpa5bc0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.co.altive.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

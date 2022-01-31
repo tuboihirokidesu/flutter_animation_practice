@@ -10,8 +10,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final counterProvider = StateProvider((ref) => 0);
 
-class UiFlutter extends ConsumerWidget {
-  const UiFlutter({Key? key}) : super(key: key);
+class AppPage extends ConsumerWidget {
+  const AppPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

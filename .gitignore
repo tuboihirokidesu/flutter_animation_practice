@@ -49,5 +49,8 @@ app.*.map.json
 
 
 #ビルド時に生成されてFLAVORにより内容が変わるので、Git管理対象外にします。
- **/android/app/src/main/res/mipmap*/
- **/ios/Flutter/DartDefines.xcconfig
+**/android/app/src/main/res/mipmap*/
+**/ios/Flutter/DartDefines.xcconfig
+**/ios/GoogleService-Info.plist
+**/android/app/google-services.json
+**/ios/GoogleService-Info.plist
