@@ -27,7 +27,7 @@ class BatteryStatus extends StatelessWidget {
         const Spacer(),
         Text(
           "Charging".toUpperCase(),
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
         const Text(
           "18 min remaining",

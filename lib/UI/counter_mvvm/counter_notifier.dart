@@ -1,5 +1,5 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 part 'counter_notifier.freezed.dart';
 
@@ -22,6 +22,7 @@ final counterPageNotifierProvider =
 class CounterPageNotifier extends StateNotifier<CounterState> {
   CounterPageNotifier(this._read) : super(const CounterState());
   // Reader 型をフィールドに持っておくことで、HomePageNotifierから他のProviderを読み取ることができるようになります
+  // ignore: unused_field
   final Reader _read;
 
   increaseMainCount() {

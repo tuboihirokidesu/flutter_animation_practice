@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http/http.dart' as http;
 
 final configProvider = FutureProvider<Map<String, Object?>>((ref) async {
   final response = await http.get(Uri.https(

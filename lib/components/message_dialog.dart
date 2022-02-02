@@ -69,6 +69,7 @@ void _showDialog(
 }
 
 class MessageDialog extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MessageDialog({
     this.title,
     this.content,

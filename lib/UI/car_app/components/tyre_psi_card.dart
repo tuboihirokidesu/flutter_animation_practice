@@ -28,7 +28,7 @@ class TyrePsiCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 lowPressureText(context),
-                Spacer(),
+                const Spacer(),
                 psiText(context, psi: tyrePsi.psi.toString()),
                 const SizedBox(height: defaultPadding),
                 Text(
@@ -46,7 +46,7 @@ class TyrePsiCard extends StatelessWidget {
                   "${tyrePsi.temp}\u2103",
                   style: const TextStyle(fontSize: 16),
                 ),
-                Spacer(),
+                const Spacer(),
                 lowPressureText(context),
               ],
             ),
@@ -65,7 +65,7 @@ class TyrePsiCard extends StatelessWidget {
         ),
         Text(
           "Pressure".toUpperCase(),
-          style: TextStyle(fontSize: 20),
+          style: const TextStyle(fontSize: 20),
         ),
       ],
     );

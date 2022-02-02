@@ -1,7 +1,8 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 part 'card_notifier.freezed.dart';
 
@@ -32,10 +33,10 @@ final cardNotifierProvider =
 class CardNotifier extends StateNotifier<CardState> {
   CardNotifier(this._read) : super(const CardState());
   // Reader 型をフィールドに持っておくことで、HomePageNotifierから他のProviderを読み取ることができるようになります
+  // ignore: unused_field
   final Reader _read;
 
   void Function()? toOpenCard1() {
-    print(state.angle1 + pi);
     state = state.copyWith(
       isOpenCard1: true,
       ptOfCard1: Random().nextInt(25) + 1,

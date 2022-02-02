@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animation/constanins.dart';
+import 'package:flutter_animation/gen/assets.gen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TeslaBottomNavigationBar extends StatelessWidget {
@@ -34,8 +35,8 @@ class TeslaBottomNavigationBar extends StatelessWidget {
 }
 
 List<String> navIconSrc = [
-  "assets/icons/Lock.svg",
-  "assets/icons/Charge.svg",
-  "assets/icons/Temp.svg",
-  "assets/icons/Tyre.svg",
+  Assets.icons.lock.toString(),
+  Assets.icons.charge.toString(),
+  Assets.icons.temp.toString(),
+  Assets.icons.tyre.toString(),
 ];

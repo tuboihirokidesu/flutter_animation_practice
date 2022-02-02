@@ -1,5 +1,5 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 part 'temp_detail_notifier.freezed.dart';
 
@@ -20,6 +20,7 @@ final tempDetailNotifierProvider =
 class TempDetailNotifier extends StateNotifier<TempDetailState> {
   TempDetailNotifier(this._read) : super(const TempDetailState());
   // Reader 型をフィールドに持っておくことで、HomePageNotifierから他のProviderを読み取ることができるようになります
+  // ignore: unused_field
   final Reader _read;
 
   void toPlusTemp() {

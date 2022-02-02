@@ -1,7 +1,5 @@
-import 'dart:math';
-
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 part 'car_app_home_notifier.freezed.dart';
 
@@ -29,6 +27,7 @@ final carAppHomeNotifierProvider =
 class CarAppHomeNotifier extends StateNotifier<CarAppHomeState> {
   CarAppHomeNotifier(this._read) : super(const CarAppHomeState());
   // Reader 型をフィールドに持っておくことで、HomePageNotifierから他のProviderを読み取ることができるようになります
+  // ignore: unused_field
   final Reader _read;
 
   void onBottomNavigationTabChange(int index) {

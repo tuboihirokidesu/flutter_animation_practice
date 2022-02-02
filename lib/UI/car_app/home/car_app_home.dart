@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_animation/UI/car_app/components/battery_status.dart';
 import 'package:flutter_animation/UI/car_app/components/door_lock.dart';
 import 'package:flutter_animation/UI/car_app/components/navigation_bar.dart';
@@ -9,8 +10,8 @@ import 'package:flutter_animation/UI/car_app/components/tyre_psi_card.dart';
 import 'package:flutter_animation/UI/car_app/home/car_app_home_notifier.dart';
 import 'package:flutter_animation/UI/car_app/models/tyre_psi.dart';
 import 'package:flutter_animation/constanins.dart';
+import 'package:flutter_animation/gen/assets.gen.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CarAppHomePage extends HookConsumerWidget {
@@ -37,17 +38,18 @@ class CarAppHomePage extends HookConsumerWidget {
     final notifier = ref.watch(carAppHomeNotifierProvider.notifier);
     final tempDetailState = ref.watch(tempDetailNotifierProvider);
 
+    // ignore: unused_local_variable
     List<Animation<double>>? _tyreAnimations;
 
     setupTyreAnimation() {
       _animationTyre1Psi = CurvedAnimation(
-          parent: _tyreAnimationController, curve: Interval(0.34, 0.5));
+          parent: _tyreAnimationController, curve: const Interval(0.34, 0.5));
       _animationTyre2Psi = CurvedAnimation(
-          parent: _tyreAnimationController, curve: Interval(0.5, 0.66));
+          parent: _tyreAnimationController, curve: const Interval(0.5, 0.66));
       _animationTyre3Psi = CurvedAnimation(
-          parent: _tyreAnimationController, curve: Interval(0.66, 0.82));
+          parent: _tyreAnimationController, curve: const Interval(0.66, 0.82));
       _animationTyre4Psi = CurvedAnimation(
-          parent: _tyreAnimationController, curve: Interval(0.82, 1));
+          parent: _tyreAnimationController, curve: const Interval(0.82, 1));
 
       _tyreAnimations = [
         _animationTyre1Psi,
@@ -98,8 +100,6 @@ class CarAppHomePage extends HookConsumerWidget {
               notifier.showTyresController(index);
               notifier.onBottomNavigationTabChange(index);
               notifier.tyreStatusController(index);
-              print(state.isShowTyres);
-              print(state.isShowTyreStatus);
             },
             selectedTab: state.selectedBottomNab,
           ),
@@ -120,10 +120,7 @@ class CarAppHomePage extends HookConsumerWidget {
                       child: Padding(
                         padding: EdgeInsets.symmetric(
                             vertical: constrains.maxHeight * 0.1),
-                        child: SvgPicture.asset(
-                          "assets/icons/Car.svg",
-                          width: double.infinity,
-                        ),
+                        child: Assets.icons.car.svg(width: double.infinity),
                       ),
                     ),
                     AnimatedPositioned(
@@ -184,10 +181,8 @@ class CarAppHomePage extends HookConsumerWidget {
                     ),
                     Opacity(
                       opacity: _animationBatteryStatus,
-                      child: SvgPicture.asset(
-                        "assets/icons/Battery.svg",
-                        width: constrains.maxWidth * 0.40,
-                      ),
+                      child: Assets.icons.battery
+                          .svg(width: constrains.maxWidth * 0.40),
                     ),
                     Positioned(
                       top: 20 * (1 - _animationBatteryStatus),
@@ -213,22 +208,22 @@ class CarAppHomePage extends HookConsumerWidget {
                     Positioned(
                       right: -180 * (1 - _animationCarShift),
                       child: AnimatedSwitcher(
-                        duration: defaultDuration,
-                        child: state.isCoolSelected
-                            ? Opacity(
-                                opacity: tempDetailState.temp / 100,
-                                child: Image.asset(
-                                  "assets/images/Cool_glow_2.png",
-                                  key: UniqueKey(),
-                                  width: 200,
-                                ),
-                              )
-                            : Image.asset(
-                                "assets/images/Hot_glow_4.png",
-                                key: UniqueKey(),
-                                width: 200,
-                              ),
-                      ),
+                          duration: defaultDuration,
+                          child: state.isCoolSelected
+                              ? Opacity(
+                                  opacity: tempDetailState.temp / 100,
+                                  child: Assets.images.coolGlow2.image(
+                                    key: UniqueKey(),
+                                    width: 200,
+                                  ),
+                                )
+                              : Opacity(
+                                  opacity: tempDetailState.temp / 100,
+                                  child: Assets.images.hotGlow4.image(
+                                    key: UniqueKey(),
+                                    width: 200,
+                                  ),
+                                )),
                     ),
                     if (state.isShowTyres) ...tyres(constrains),
                     if (state.isShowTyreStatus)

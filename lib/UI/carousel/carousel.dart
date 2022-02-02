@@ -59,12 +59,12 @@ class _CarouselState extends State<Carousel> {
                 heightFactor: 0.55,
                 child: PageView.builder(
                   itemCount: images.length,
-                  onPageChanged: (int page) {
+                  onPageChanged: (page) {
                     setState(() {
                       currentIndex = page;
                     });
                   },
-                  itemBuilder: (context, int index) {
+                  itemBuilder: (context, index) {
                     return FractionallySizedBox(
                       widthFactor: 0.8,
                       child: Container(

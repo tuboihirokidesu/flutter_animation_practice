@@ -1,6 +1,10 @@
 {
   "cSpell.words": [
-    "riverpod"
+    "constanins",
+    "interps",
+    "riverpod",
+    "subosito",
+    "tyers"
   ],
   "dart.flutterSdkPath": ".fvm/flutter_sdk",
    // 検索対象からFVMのファイルを除外します。(任意)

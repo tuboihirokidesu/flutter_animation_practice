@@ -74,8 +74,8 @@ class CardPage extends HookConsumerWidget {
                   child: TweenAnimationBuilder(
                     tween: Tween<double>(begin: 0, end: angle[index]),
                     duration: defaultDuration,
-                    builder: ((BuildContext context, double val, __) =>
-                        Transform(
+                    // ignore: avoid_types_on_closure_parameters
+                    builder: ((context, double val, __) => Transform(
                           alignment: Alignment.center,
                           transform: Matrix4.identity()
                             ..setEntry(3, 2, 0.001)

@@ -7,6 +7,7 @@ class TodoItemTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: todo
     // TODOアイテムのIndexを取得
     final index = ref.watch(currentTodoIndex);
     return ListTile(title: Text('$index番目のTODO'));

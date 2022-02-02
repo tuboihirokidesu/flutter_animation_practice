@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animation/UI/car_app/home/car_app_home.dart';
-
-import 'package:flutter_animation/UI/carousel/carousel.dart';
 import 'package:flutter_animation/UI/api_data/api_data.dart';
+import 'package:flutter_animation/UI/carousel/carousel.dart';
 import 'package:flutter_animation/UI/counter_mvvm/counter.dart';
+import 'package:flutter_animation/UI/hooks/use_router.dart';
+import 'package:flutter_animation/UI/routes/app_route.dart';
 import 'package:flutter_animation/UI/sum_number_card/card_page.dart';
 import 'package:flutter_animation/components/card_button.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final counterProvider = StateProvider((ref) => 0);
 
-class AppPage extends ConsumerWidget {
+class AppPage extends HookConsumerWidget {
   const AppPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counter = ref.watch(counterProvider.notifier);
+    final router = useRouter();
 
     ref.listen<int>(
       counterProvider,
@@ -43,7 +44,7 @@ class AppPage extends ConsumerWidget {
         padding: const EdgeInsets.all(15),
         children: [
           CardButton(
-            title: 'Carousel',
+            title: 'Carousellll',
             actionTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (_) => const Carousel()));
@@ -65,10 +66,7 @@ class AppPage extends ConsumerWidget {
           ),
           CardButton(
             title: 'car_app',
-            actionTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (_) => const CarAppHomePage()));
-            },
+            actionTap: () => router.push(const CounterRoute()),
           ),
           CardButton(
             title: 'sum_number_card',
